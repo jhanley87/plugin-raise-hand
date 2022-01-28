@@ -2,8 +2,10 @@ import React from 'react';
 import * as Flex from '@twilio/flex-ui';
 import { FlexPlugin } from 'flex-plugin';
 
-import CustomTaskListContainer from './components/CustomTaskList/CustomTaskList.Container';
 import reducers, { namespace } from './states';
+
+import WorkerHand from './components/worker-hand/worker-hand.container';
+import { ColumnDefinition } from "@twilio/flex-ui";
 
 const PLUGIN_NAME = 'RaiseHandPlugin';
 
@@ -23,7 +25,14 @@ export default class RaiseHandPlugin extends FlexPlugin {
     this.registerReducers(manager);
 
     const options: Flex.ContentFragmentProps = { sortOrder: -1 };
-    flex.AgentDesktopView.Panel1.Content.add(<CustomTaskListContainer key="RaiseHandPlugin-component" />, options);
+    
+
+    flex.MainHeader.Content.add(<WorkerHand key="worker-hand" worker={manager.workerClient.sid} syncClient={manager.insightsClient} />, {
+      sortOrder: -1,
+      align: 'end'
+    });
+
+    flex.WorkersDataTable.Content.add(<ColumnDefinition key="agent-hand-custom" header={""} content={item => <WorkerHand key={`worker-${item.worker.sid}-hand`} worker={item.worker.sid} syncClient={manager.insightsClient} />}/>, {sortOrder:0});
   }
 
   /**
