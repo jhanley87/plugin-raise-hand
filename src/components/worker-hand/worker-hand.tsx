@@ -30,10 +30,10 @@ export default class WorkerHand extends React.Component<
 > {
   
   async componentDidMount() {
-    var syncDoc = await this.props.syncClient.document(
+    const syncDoc = await this.props.syncClient.document(
       this.workerHandStateDocName
     );
-    var docState = syncDoc.value as WorkerHandState;
+    const docState = syncDoc.value as WorkerHandState;
 
     await this.handleDocUpdate(docState);
 
@@ -62,10 +62,10 @@ export default class WorkerHand extends React.Component<
   handleRaiseHand = async (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
 
-    var syncDoc = await this.props.syncClient.document(
+    const syncDoc = await this.props.syncClient.document(
       this.workerHandStateDocName
     );
-    var docState = syncDoc.value as WorkerHandState;
+    const docState = syncDoc.value as WorkerHandState;
     docState.isRaised = true;
 
     syncDoc.update(docState);
@@ -74,10 +74,10 @@ export default class WorkerHand extends React.Component<
   handleLowerHand = async (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
 
-    var syncDoc = await this.props.syncClient.document(
+    const syncDoc = await this.props.syncClient.document(
       this.workerHandStateDocName
     );
-    var docState = syncDoc.value as WorkerHandState;
+    const docState = syncDoc.value as WorkerHandState;
 
     docState.isRaised = false;
 
