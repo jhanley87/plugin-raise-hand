@@ -27,7 +27,7 @@ export default class RaiseHandPlugin extends FlexPlugin {
     const options: Flex.ContentFragmentProps = { sortOrder: -1 };
     
 
-    flex.MainHeader.Content.add(<WorkerHand key="worker-hand" worker={manager.workerClient.sid} syncClient={manager.insightsClient} />, {
+    flex.MainHeader.Content.add(<WorkerHand key="worker-hand" worker={manager.workerClient} syncClient={manager.insightsClient} />, {
       sortOrder: -1,
       align: 'end'
     });

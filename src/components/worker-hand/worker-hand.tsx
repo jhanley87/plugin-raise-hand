@@ -24,7 +24,7 @@ interface WorkerHandState {
 // Props should be a combination of StateToProps, DispatchToProps, and OwnProps
 type Props = StateToProps & DispatchToProps & OwnProps;
 
-export default class workerHand extends React.Component<
+export default class WorkerHand extends React.Component<
   Props,
   WorkerHandState
 > {
