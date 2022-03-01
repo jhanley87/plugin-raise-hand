@@ -32,7 +32,7 @@ export default class RaiseHandPlugin extends FlexPlugin {
       align: 'end'
     });
 
-    flex.WorkersDataTable.Content.add(<ColumnDefinition key="agent-hand-custom" header={""} content={item => <WorkerHand key={`worker-${item.worker.sid}-hand`} worker={item.worker.sid} syncClient={manager.insightsClient} />}/>, {sortOrder:0});
+    flex.WorkersDataTable.Content.add(<ColumnDefinition key="agent-hand-custom" header={""} content={item => <WorkerHand key={`worker-${item.worker.sid}-hand`} worker={item.worker} syncClient={manager.insightsClient} />}/>, {sortOrder:0});
   }
 
   /**
